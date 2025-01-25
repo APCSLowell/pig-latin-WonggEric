@@ -57,8 +57,5 @@ public class PigLatin {
     }
   }
 
-  public static void main(String[] args) {
-    PigLatin pigLatin = new PigLatin();
-    pigLatin.tester();
-  }
+ 
 }

@@ -27,10 +27,11 @@ public class PigLatin {
       System.out.println(pigLatin(lines[i]));
     }
   }
+
   public int findFirstVowel(String sWord) {
     if (sWord.length() > 1) {
       for (int i = 0; i<sWord.length(); i++) {
-        if (sWord.charAt(i) =='a'|| sWord.charAt(i)=='e'|| sWord.charAt(i)=='i'|| sWord.charAt(i)=='o'|| sWord.charAt(i)=='u') {
+        if (sWord.toLowerCase().charAt(i) =='a'|| sWord.toLowerCase().charAt(i)=='e'|| sWord.toLowerCase().charAt(i)=='i'|| sWord.toLowerCase().charAt(i)=='o'|| sWord.toLowerCase().charAt(i)=='u') {
           return i;
         }
       }
@@ -41,18 +42,23 @@ public class PigLatin {
   public String pigLatin(String sWord) {
     //precondition: sWord is a valid String of length greater than 0
     //postcondition: returns the pig latin equivalent of sWord
-    // more code should go here
     int firstVowelIndex = findFirstVowel(sWord);
     
     if (firstVowelIndex == -1) {
       return sWord + "ay";
     }else if(firstVowelIndex == 0){
       return sWord +"way";
-    }else if(sWord.substring(0,2).equals("qu")){
+    }else if(sWord.substring(0,2).toLowerCase().equals("qu")){
       return sWord.substring(2)+"quay";
     }else if(firstVowelIndex>0){
-      return sWord.substring(1)+sWord.charAt(0)+"ay";
+      return sWord.substring(firstVowelIndex)+sWord.substring(0,firstVowelIndex)+"ay";
     }else{
       return "ERROR!";
-    
-}//end PigLatin class
+    }
+  }
+
+  public static void main(String[] args) {
+    PigLatin pigLatin = new PigLatin();
+    pigLatin.tester();
+  }
+}

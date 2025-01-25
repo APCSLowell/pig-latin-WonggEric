@@ -44,7 +44,11 @@ public class PigLatin {
     // more code should go here
     int firstVowelIndex = findFirstVowel(sWord);
     
-    if (findFirstVowel(sWord) == -1) {
+    if (firstVowelIndex == -1) {
       return sWord + "ay";
+    }else if(firstVowelIndex == 0){
+      return sWord +"way";
+    }else{
+      return "ERROR!";
     
 }//end PigLatin class

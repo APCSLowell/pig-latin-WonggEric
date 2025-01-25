@@ -48,6 +48,10 @@ public class PigLatin {
       return sWord + "ay";
     }else if(firstVowelIndex == 0){
       return sWord +"way";
+    }else if(sWord.substring(0,2).equals("qu")){
+      return sWord.substring(2)+"quay";
+    }else if(firstVowelIndex>0){
+      return sWord.substring(1)+sWord.charAt(0)+"ay";
     }else{
       return "ERROR!";
     

@@ -39,24 +39,22 @@ public class PigLatin {
   }
 
   public String pigLatin(String sWord) {
-    if (sWord == null || sWord.isEmpty()) {
-      return "Invalid input"; // Handle null or empty strings
+    //precondition: sWord is a valid String of length greater than 0
+    //postcondition: returns the pig latin equivalent of sWord
+    // more code should go here
+   int firstVowelIndex = findFirstVowel(sWord); // Find the index of the first vowel
+    
+    if (firstVowelIndex == -1) {
+        return sWord + "ay";
     }
-
-    sWord = sWord.toLowerCase(); // Make lowercase for consistency
-    int vowelIndex = findFirstVowel(sWord);
-
-    if (vowelIndex == -1) {
-      // No vowels, add "ay" at the end
-      return sWord + "ay";
-    } else if (vowelIndex == 0) {
-      // Starts with a vowel, add "way" at the end
-      return sWord + "way";
-    } else if (vowelIndex > 0 && sWord.startsWith("qu")) {
-      // Starts with "qu", move "qu" to the end and add "ay"
-      return sWord.substring(2) + "quay";
-    } else {
-      // Move all letters before the first vowel to the end and add "ay"
-      return sWord.substring(vowelIndex) + sWord.substring(0, vowelIndex) + "ay";
+    
+    if (firstVowelIndex == 0) {
+        return sWord + "way";
     }
-  }
+    
+    if (sWord.startsWith("qu")) {
+        return sWord.substring(2) + "quay";
+    }
+    
+    return sWord.substring(firstVowelIndex) + sWord.substring(0, firstVowelIndex) + "ay";
+}//end PigLatin class
